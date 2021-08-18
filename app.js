@@ -18,9 +18,9 @@
         app.use(flash())
     // Middleware
         app.use((req,res,next)=>{
-            res.locals.success_msg = req.flash("Success_msg")
-            res.locals.error_msg = req.flash("Error_msg")
-            next();
+            res.locals.success_msg = req.flash("success_msg")
+            res.locals.error_msg = req.flash("error_msg")
+            next()
         })
     // Express
         app.use(express.urlencoded({ extended: true}))
@@ -38,7 +38,7 @@
             useCreateIndex: true
         }).then(()=>{
                     console.log(`Conectado ao MongoDB...`)
-                }).catch((err)=>{
+        }).catch((err)=>{
                     console.log(`Erro ao conectar ${err}`)
         })
     // Public
