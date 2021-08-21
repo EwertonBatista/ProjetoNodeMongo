@@ -51,7 +51,7 @@
     app.use('/admin', admin)
 
 // Outros
-const port = 8081
+const port = 8080
 app.listen(port, ()=>{
     console.log('Server rodando na porta: ', port)
 })
