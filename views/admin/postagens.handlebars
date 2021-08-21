@@ -20,14 +20,14 @@
                 </div>
             </div>
             
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center align-items-end">
                 <a href="/admin/postagens/edit/{{_id}}" class="btn btn-success ml-3 mt-3">Editar</a>
                
-                <form action="/admin/postagens/deletar" method="post">
+                <form action="/admin/postagens/deletar" method="post" class="ml-3">
                     <input type="hidden" name="id" value="{{_id}}">
                     <button type="submit" class="btn btn-danger">Deletar</button>
                 </form>
-                
+
             </div>
         </div>
     </div>

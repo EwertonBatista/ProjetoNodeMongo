@@ -348,4 +348,5 @@ router.post("/postagens/deletar", (req,res) => {
     })
 })
 
+
 module.exports = router;
