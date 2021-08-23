@@ -1,12 +1,24 @@
 // Modulos
     const express = require('express')
-    const handlebars = require('express-handlebars')
     const app = express();
+    // Handlebars
+    const handlebars = require('express-handlebars')
+    // Rotas
     const admin = require('./routes/admin')
+
     const path = require('path')
-    const mongoose = require('mongoose')
+    // Flash & Session
     const session = require('express-session')
     const flash = require('connect-flash')
+    // Mongoose
+    const mongoose = require('mongoose')
+    // Modulo de Postagem
+    require("./models/Postagem")
+    const Postagem = mongoose.model("postagens")
+    // Modulo de Categoria
+    require("./models/Categoria")
+    const Categoria = mongoose.model("categorias")
+
 
 // Configurações
     // Sessão
@@ -48,6 +60,87 @@
 
 
 // Rotas
+
+    // PAGINA PRINCIPAL
+    app.get('/', (req,res)=>{
+        Postagem.find()
+        .lean()
+        .populate("categoria")
+        .sort({data: 'desc'})
+        .then((postagens)=>{
+            res.render('index', {
+                postagens: postagens
+            })
+        })
+        .catch(err => {
+            req.flash('error_msg', 'Não foi possivel carregar os posts, tente novamente')
+            res.redirect('/404')
+        })
+    })
+    // PAGINA DE POSTAGENS
+    app.get('/postagem/:slug', (req, res)=>{
+        Postagem.findOne({slug: req.params.slug})
+        .lean()
+        .then((postagem)=>{
+            if(postagem){
+                res.render('postagem/index', {postagem: postagem})
+            }else{
+                req.flash('error_msg', 'Postagem não encontrada')
+                res.redirect("/")
+            }
+        }).catch(err => {
+            req.flash('error_msg', 'Houve um erro interno')
+            res.redirect("/")
+        })
+    })
+    // PAGINA 404
+    app.get('/404', (req, res)=>{
+        res.send('Error 404 Page not Found miahahah')
+    })
+
+    app.get('/categorias', (req, res)=>{
+        Categoria.find()
+        .lean()
+        .then((categorias)=>{
+            let quantidade = categorias.length
+            res.render('categoria/index', {categorias: categorias, quantidade: quantidade})
+
+        }).catch((err) => {
+            console.log(err)
+            req.flash('error_msg', 'Houve um Erro')
+            res.redirect('/')
+        })
+    })
+
+    app.get('/categorias/:slug', (req, res) => {
+        Categoria.findOne({
+            slug: req.params.slug
+        }).then((categoria)=>{
+            if(categoria){
+                Postagem.find({
+                    categoria: categoria._id
+                }).lean().then((postagens)=>{
+                    res.render('categoria/postagem', {
+                        postagens: postagens,
+                        categoria: categoria
+                    })
+                }).catch((err)=>{   
+                    req.flash('error_msg','Houve um erro ao listar')
+                    res.redirect('/')
+                })
+                
+            }else{
+
+                req.flash('error_msg', 'Esta categoria não existe')
+                res.redirect('/')
+
+            }
+        }).catch((err) => {
+            req.flash('error_msg', err)
+            res.redirect('/')
+        })
+    })
+
     app.use('/admin', admin)
 
 // Outros

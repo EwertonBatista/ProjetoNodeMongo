@@ -1,0 +1,24 @@
+{{categoria.nome}}
+{{#each postagens}}
+    <div class="card mt-3 mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-center">
+                <div>
+                    <h4 class="text-center">{{titulo}}</h4>
+                    <p class="text-center">Descrição: {{descricao}}</p>
+
+                    <div class="d-flex justify-content-center mb-3">
+                        <a href="/postagem/{{slug}}" class="btn btn-primary btn-sm">Leia mais</a>
+                    </div>
+
+                    <small class="text-center d-block">Data: {{data}}</small> 
+                </div>
+            </div>
+        </div>
+    </div>
+{{else}}
+    <div class="alert alert-warning">
+        <h2 class="text-center display-5">Nenhuma postagem cadastrada</h2>
+    </div>
+
+{{/each}}

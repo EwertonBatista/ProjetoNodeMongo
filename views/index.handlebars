@@ -1,0 +1,46 @@
+<div class="jumbotron">
+  <h1 class="display-4 text-center">Olá, bem vindo</h1>
+  <p class="lead text-center">Este é um simples projeto criado para praticar CRUD com MongoDB + NodeJS</p>
+  <hr class="my-4">
+  <p class="text-center">Ele usa classes utilitárias para tipografia e espaçamento de conteúdo, dentro do maior container.</p>
+  <div class="d-flex justify-content-center">
+  <a class="btn btn-primary btn-lg" href="#" role="button">Cadastre-se</a>
+  </div>
+
+</div>
+
+<hr>
+
+<h2 class="text-center">Postagens Recentes</h2>
+
+
+{{#each postagens}}
+    <div class="card mt-3 mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-center">
+                <div>
+                    <h4 class="text-center">{{titulo}}</h4>
+                    <p class="text-center">Descrição: {{descricao}}</p>
+
+                    <div class="d-flex justify-content-center mb-3">
+                        <a href="/postagem/{{slug}}" class="btn btn-primary btn-sm">Leia mais</a>
+                    </div>
+
+                    <small class="text-center d-block">Data: {{data}}</small>
+                    <small class="text-center d-block">Categoria: {{categoria.nome}}</small> 
+                </div>
+            </div>
+        </div>
+    </div>
+{{else}}
+    <div class="alert alert-warning">
+        <h2 class="text-center display-5">Nenhuma postagem cadastrada</h2>
+    </div>
+
+{{/each}}
+
+<style>
+    .card{
+        background-color:rgba(127, 255, 212, 0.513)
+    }
+</style>
