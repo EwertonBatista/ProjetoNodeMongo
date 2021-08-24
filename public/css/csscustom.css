@@ -1,0 +1,6 @@
+.zoomup{
+    transition: 1s;
+}
+.zoomup:hover{
+    transform: scale(1.3);
+}
