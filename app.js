@@ -124,7 +124,7 @@
     })
     // PAGINA 404
     app.get('/404', (req, res)=>{
-        res.send('Error 404 Page not Found miahahah')
+        res.send('Error 404 Page not Found')
     })
 
     app.get('/categorias', (req, res)=>{
@@ -174,7 +174,7 @@
     app.use('/usuario', usuario)
 
 // Outros
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 8089
 app.listen(port, ()=>{
     console.log('Server rodando na porta: ', port)
 })
