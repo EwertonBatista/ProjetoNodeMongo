@@ -13,6 +13,11 @@
         <div class="container mt-4">
             <div class="d-flex justify-content-center">
                 {{>_msg}}
+                {{#if error}}
+                    <div class="alert alert-danger">{{error}}</div>
+                {{else}}
+
+                {{/if}}
             </div>
 
             {{{body}}}

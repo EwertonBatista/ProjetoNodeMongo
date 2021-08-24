@@ -5,6 +5,7 @@
     const handlebars = require('express-handlebars')
     // Rotas
     const admin = require('./routes/admin')
+    const usuario = require('./routes/usuario')
 
     const path = require('path')
     // Flash & Session
@@ -18,6 +19,12 @@
     // Modulo de Categoria
     require("./models/Categoria")
     const Categoria = mongoose.model("categorias")
+    // Data-fns
+    const format = require("date-fns/format");
+    const formatDistance = require("date-fns/formatDistance");
+    // Autenticação
+    passport = require('passport')
+    require("./config/auth")(passport)
 
 
 // Configurações
@@ -27,19 +34,38 @@
             resave: true,
             saveUninitialized: true
         }))
+
+        app.use(passport.initialize())
+        app.use(passport.session())
+
         app.use(flash())
     // Middleware
         app.use((req,res,next)=>{
+            // Variaveis globais
             res.locals.success_msg = req.flash("success_msg")
             res.locals.error_msg = req.flash("error_msg")
+            res.locals.error = req.flash("error")
+            res.locals.user = req.user || null
             next()
         })
     // Express
         app.use(express.urlencoded({ extended: true}))
         app.use(express.json());
     // HandleBars
-        app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+
+        var hbs = handlebars.create({
+            helpers: {
+                dataFormatada: function(data){
+                    return format(data, 'dd/MM/yyyy')
+                }
+            },
+            defaultLayout: 'main'
+        })
+
+        app.engine('handlebars', hbs.engine);
+        
         app.set('view engine', 'handlebars');
+        
     // Mongoose conexão
         mongoose.Promise = global.Promise;
         mongoose.connect('mongodb://localhost/blogapp',
@@ -142,6 +168,7 @@
     })
 
     app.use('/admin', admin)
+    app.use('/usuario', usuario)
 
 // Outros
 const port = 8080
