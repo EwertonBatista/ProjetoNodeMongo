@@ -48,6 +48,17 @@
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
+/* Categorias */
+
+.own__categorias{
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+}
+.own__categorias > a {
+    margin: 5px;
+}
+
 /* Body */
 
 body{
@@ -57,12 +68,11 @@ body{
 .own__body {
     padding-top: 1px;
     background: rgba(245, 245, 245, 0.465);
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 2.5px );
     -webkit-backdrop-filter: blur( 2.5px );
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
-    height:100vh;
+    height: 100vh;
 }
 
 /* Registro */
@@ -82,7 +92,7 @@ body{
     /* background: linear-gradient(120deg, rgb(138, 10, 10), rgba(255, 255, 255, 0.15)); */
     display: flex;
     justify-content: start;
-    padding-top: 150px;
+    padding-top: 40px;
     align-items: center;
     border-radius:10px;
     flex-direction: column;
