@@ -1,28 +1,33 @@
-<h3 class="text-center display-4">Crie sua conta agora</h3>
+<h3 class="text-center display-4 mb-5">Crie sua conta agora</h3>
 {{#each erros}}
     <div class="alert alert-warning">{{texto}}</div>
 {{else}}
 
 {{/each}}
-<div class="card">
-    <div class="card-body">
-        <form action="/usuario/registro" method="POST">
-            <label for="nome">Nome:</label>
-            <input type="text" name="nome" class="form-control" placeholder="Nome" required>
 
-            <label for="email">Email:</label>
-            <input type="email" name="email" class="form-control" placeholder="Email" required>
 
-            <label for="senha">Senha:</label>
-            <input type="password" name="senha" class="form-control" required>
+<div class="own__registro">
+    <div class="registro">
+        <div class="own__registro__container glassmorphism">
+            <form action="/usuario/registro" class="own__registro__form" method="POST">
+        
+                <input type="text" name="nome" class="form-control own__registro__input" placeholder="Nome" required>
+                <span class="own__registro__input__border d-block"></span>
+                
+                <input type="email" name="email" class="form-control own__registro__input" placeholder="Email" required>
+                <span class="own__registro__input__border d-block"></span>
 
-            <label for="repetirSenha">Repita sua senha:</label>
-            <input type="password" name="senhaConfirm" class="form-control" required>
+                <input type="password" name="senha" class="form-control own__registro__input" placeholder="Senha" required>
+                <span class="own__registro__input__border d-block"></span>
 
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-success mt-3">Cadastrar</button>
-            </div>
+                <input type="password" name="senhaConfirm" class="form-control own__registro__input" placeholder="Repita sua senha" required>
+                <span class="own__registro__input__border d-block"></span>
 
-        </form>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success mt-3">Cadastrar</button>
+                </div>
+
+            </form>
+        </div>
     </div>
 </div>

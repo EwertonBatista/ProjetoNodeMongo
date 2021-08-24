@@ -1,14 +1,19 @@
+
+        {{#if categorias}}
+            <h3 class="text-center">Categorias registradas: </h3>
+        {{/if}}
 <div class="own__categorias">
-
-{{#each categorias}}
-    <a href="/categorias/{{slug}}">
-        <div class="alert alert-success text-center">{{nome}}</div>
-    </a>
-{{else}}
-
+    <div class="own__categorias__interior">
+        {{#each categorias}}
+            <a href="/categorias/{{slug}}">
+                <div class="alert alert-success text-center">{{nome}}</div>
+            </a>
+        {{else}}
+    </div>
 </div>
 
-    <div class="alert alert-warning">Nenhuma categoria cadastrada</div>
+
+    <div class="alert alert-warning text-center">Nenhuma categoria cadastrada</div>
 {{/each}}
  
 

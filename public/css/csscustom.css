@@ -9,6 +9,10 @@
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
+.viewheigh100{
+    height: 100vh;
+}
+
 
 /* Icones do Jumbotrom */
 .zoomup{
@@ -25,7 +29,7 @@
 /* Cards */
 
 .own__card {
-    background-color: rgb(174, 209, 209) !important;
+    background-color: rgb(255, 255, 255) !important;
 }
 
 /* Navbar */
@@ -53,16 +57,29 @@
 .own__categorias{
     display: flex;
     justify-content:center;
+}
+
+.own__categorias__interior{
+    display: flex;
+    justify-content:center;
     flex-wrap: wrap;
+    margin-top: 80px;
 }
-.own__categorias > a {
-    margin: 5px;
+.own__categorias__interior > a {
+    margin: 0 5px;
 }
+
+
 
 /* Body */
 
 body{
     height: 100vh;
+    /* background-color: #D0E4F5;
+    background-image: url("https://thumbs.dreamstime.com/b/digital-art-illustrator-background-repeat-cube-used-as-background-image-painting-advertising-media-digital-art-140012508.jpg");
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: 0 0; */
 }
 
 .own__body {
@@ -73,11 +90,52 @@ body{
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     height: 100vh;
+
+    
 }
 
 /* Registro */
 
+.own__registro{
+    display: flex;
+    justify-content:center;
+}
 
+.own__registro__interno{
+    width: 360px;
+}
+
+.own__registro__form{
+    width: 100%;
+}
+
+.own__registro__container{
+    min-height: 300px;
+    width: 400px;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 32px;
+    border-radius:8px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.own__registro__input {
+    height: 48px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 8px;
+    border: unset;
+    outline: none;
+}
+
+.own__registro__input__border {
+    height: 1px;
+    width: 100%;
+    margin-bottom: 16px;
+    background-color: #cfcfcf;
+}
 
 
 /* Login */
@@ -89,7 +147,6 @@ body{
 
 .login{
     height: 100vh;
-    /* background: linear-gradient(120deg, rgb(138, 10, 10), rgba(255, 255, 255, 0.15)); */
     display: flex;
     justify-content: start;
     padding-top: 40px;
