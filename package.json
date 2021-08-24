@@ -2,7 +2,7 @@
   "name": "projetonodemongo",
   "version": "1.0.0",
   "description": "CRUD Node + MongoDB",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "build": "cd client && npm run build",
     "install": "cd client && npm install",
