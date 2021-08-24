@@ -124,7 +124,7 @@
     })
     // PAGINA 404
     app.get('/404', (req, res)=>{
-        res.send('Error 404 Page not Found')
+        res.send('Error 404 Page not Found, Try again later')
     })
 
     app.get('/categorias', (req, res)=>{
