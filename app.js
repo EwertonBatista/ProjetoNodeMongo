@@ -143,7 +143,9 @@
     app.get('/categorias/:slug', (req, res) => {
         Categoria.findOne({
             slug: req.params.slug
-        }).then((categoria)=>{
+        })
+        .lean()
+        .then((categoria)=>{
             if(categoria){
                 Postagem.find({
                     categoria: categoria._id
