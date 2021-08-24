@@ -2,10 +2,14 @@
   "name": "projetonodemongo",
   "version": "1.0.0",
   "description": "CRUD Node + MongoDB",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "build": "cd client && npm run build",
+    "install": "cd client && npm install",
+    "start": "node app.js",
+    "server": "nodemon app.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "Ewerton Batista",
