@@ -87,7 +87,6 @@
     
         
 
-
 // Rotas
 
     // PAGINA PRINCIPAL
@@ -176,5 +175,5 @@
 // Outros
 const port = process.env.PORT || 8089
 app.listen(port, ()=>{
-    console.log('Server rodando na porta: ', port)
+    console.log('Server rodando na porta: ', port, db.mongoURI)
 })
