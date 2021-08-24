@@ -1,13 +1,14 @@
 {
-  "name": "ProjetoNodeMongo",
+  "name": "projetonodemongo",
   "version": "1.0.0",
-  "description": "",
+  "description": "CRUD Node + MongoDB",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ewerton Batista",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -22,5 +23,14 @@
     "nodemon": "^2.0.12",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EwertonBatista/ProjetoNodeMongo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EwertonBatista/ProjetoNodeMongo/issues"
+  },
+  "homepage": "https://github.com/EwertonBatista/ProjetoNodeMongo#readme"
 }

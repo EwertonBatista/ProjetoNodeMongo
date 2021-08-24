@@ -13,6 +13,8 @@
     const flash = require('connect-flash')
     // Mongoose
     const mongoose = require('mongoose')
+    // Config DB
+    const db = require('./config/db')
     // Modulo de Postagem
     require("./models/Postagem")
     const Postagem = mongoose.model("postagens")
@@ -25,6 +27,7 @@
     // Autenticação
     passport = require('passport')
     require("./config/auth")(passport)
+    
 
 
 // Configurações
@@ -68,7 +71,7 @@
         
     // Mongoose conexão
         mongoose.Promise = global.Promise;
-        mongoose.connect('mongodb://localhost/blogapp',
+        mongoose.connect(db.mongoURI,
          {
             useNewUrlParser: true,
             useUnifiedTopology: true,
@@ -171,7 +174,7 @@
     app.use('/usuario', usuario)
 
 // Outros
-const port = 8080
+const port = process.env.PORT || 8080
 app.listen(port, ()=>{
     console.log('Server rodando na porta: ', port)
 })
