@@ -173,7 +173,7 @@
     app.use('/usuario', usuario)
 
 // Outros
-const port = process.env.PORT || 8089
+const port = process.env.PORT || 8080
 app.listen(port, ()=>{
     console.log('Server rodando na porta: ', port, db.mongoURI)
 })
