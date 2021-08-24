@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": "cd client && npm run build",
+    "install": "cd client && npm install",
+    "server": "nodemon app.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run app.js\" \"npm run client\""
   },
   "keywords": [],
   "author": "Ewerton Batista",
