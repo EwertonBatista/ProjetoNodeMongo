@@ -24,7 +24,6 @@
 
 <h2 class="text-center">Postagens Recentes</h2>
 
-{{dataAgora}}
 {{#each postagens}}
     <div class="card mt-3 mb-3 glassmorphism own__card">
         <div class="card-body">
@@ -37,8 +36,8 @@
                         <a href="/postagem/{{slug}}" class="btn btn-primary btn-sm">Leia mais</a>
                     </div>
                     
-                    <small class="text-center d-block">{{#formatDataExata data}} {{/formatDataExata}} 
-                     {{#formatDataTempo data}} {{/formatDataTempo}}</small>
+                    <small class="text-center d-block">{{#formatDataExata data}} {{/formatDataExata}}</small>
+                    <small class="text-center d-block">{{#formatDataTempo data}} {{/formatDataTempo}}</small>
                     <small class="text-center d-block">Categoria: {{categoria.nome}}</small> 
                 </div>
             </div>
