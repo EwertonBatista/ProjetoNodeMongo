@@ -57,14 +57,22 @@
     // HandleBars
 
         var hbs = handlebars.create({
+            defaultLayout: 'main',
             helpers: {
-                dataFormatada: (data)=>{
-                    
+                formatDataExata: (data)=>{
+                    return format(data, 'dd-MM-yyyy')
+                },
+                formatDataTempo: (data)=>{
+                    return formatDistance(data, new Date(), {
+                       
+                    })
                 }
-                }
-            },
-            defaultLayout: 'main'
+            }
+            
         })
+            
+            
+                
 
         app.engine('handlebars', hbs.engine);
         
@@ -99,8 +107,8 @@
         .then((postagens)=>{
 
             console.log(format(new Date(), 'dd-MM-yyyy'))
-            console.log(postagens.data)
             console.log(new Date())
+            console.log(postagens.data)
 
             res.render('index', {
                 postagens: postagens,

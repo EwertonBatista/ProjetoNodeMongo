@@ -37,7 +37,8 @@
                         <a href="/postagem/{{slug}}" class="btn btn-primary btn-sm">Leia mais</a>
                     </div>
                     
-                    <small class="text-center d-block">Data: {{data}}</small>
+                    <small class="text-center d-block">{{#formatDataExata data}} {{/formatDataExata}} 
+                        {{#formatDataTempo data}} {{/formatDataTempo}}</small>
                     <small class="text-center d-block">Categoria: {{categoria.nome}}</small> 
                 </div>
             </div>
