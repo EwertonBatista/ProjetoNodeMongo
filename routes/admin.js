@@ -37,7 +37,6 @@ router.get("/categorias", eAdmin, (req, res) => {
     .then((categoria) => {
 
 
-      // let dataAgora = new Date()
       // categoria.forEach((categoria)=>{
       //   console.log(`logando com mongo ${categoria.date}`)
       // })  

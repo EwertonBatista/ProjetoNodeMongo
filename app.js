@@ -58,8 +58,9 @@
 
         var hbs = handlebars.create({
             helpers: {
-                dataFormatada: function(data){
-                    return format(data, 'dd/MM/yyyy')
+                dataFormatada: (data)=>{
+                    
+                }
                 }
             },
             defaultLayout: 'main'
@@ -96,8 +97,13 @@
         .populate("categoria")
         .sort({data: 'desc'})
         .then((postagens)=>{
+
+            console.log(format(new Date(), 'dd-MM-yyyy'))
+            console.log(postagens.data)
+            console.log(new Date())
+
             res.render('index', {
-                postagens: postagens
+                postagens: postagens,
             })
         })
         .catch(err => {
