@@ -24,6 +24,7 @@
     // Data-fns
     const format = require("date-fns/format");
     const formatDistance = require("date-fns/formatDistance");
+    const brLocale = require('date-fns/locale/pt-BR')
     // Autenticação
     passport = require('passport')
     require("./config/auth")(passport)
@@ -64,7 +65,7 @@
                 },
                 formatDataTempo: (data)=>{
                     return formatDistance(data, new Date(), {
-                       
+                       locale: brLocale
                     })
                 }
             }
@@ -105,10 +106,6 @@
         .populate("categoria")
         .sort({data: 'desc'})
         .then((postagens)=>{
-
-            console.log(format(new Date(), 'dd-MM-yyyy'))
-            console.log(new Date())
-            console.log(postagens.data)
 
             res.render('index', {
                 postagens: postagens,
