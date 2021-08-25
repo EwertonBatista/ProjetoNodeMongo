@@ -7,8 +7,6 @@ module.exports = {
         if(req.isAuthenticated() && req.user.eAdmin == 1){
             return next()
         }
-
-
         Postagem.find()
         .lean()
         .populate("categoria")
@@ -20,13 +18,14 @@ module.exports = {
                     deslogado: true
                 })
             })
-
-
-
-
-
+        }
     }
 
 
 
-}
+
+
+
+
+
+
