@@ -22,7 +22,48 @@
 
 <hr>
 
+{{#if deslogado}}
+    <script>
+        function sucesso(){
+            Swal.fire(
+            'Você precisa fazer o login!',
+            '😉',
+            'info'
+            )
+        }
+       sucesso();
+    </script>  
+{{/if}}
+    
+
+{{#if sucesso}}
+    <script>
+        function sucesso(){
+            Swal.fire(
+            'Usuario cadastrado!',
+            '🤗',
+            'success'
+            )
+        }
+       sucesso();
+    </script>   
+{{/if}}
+
+{{#if falha}}
+    <script>
+        function falha(){
+            Swal.fire(
+            'Erro ao cadastrar!',
+            '😥',
+            'error'
+            )
+        }
+        falha();
+    </script> 
+{{/if}}
 <h2 class="text-center">Postagens Recentes</h2>
+
+{{!-- <button onclick="falha()"></button> --}}
 
 {{#each postagens}}
     <div class="card mt-3 mb-3 glassmorphism own__card">

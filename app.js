@@ -107,10 +107,11 @@
         .sort({data: 'desc'})
         .then((postagens)=>{
 
-            res.render('index', {
-                postagens: postagens,
+                res.render('index', {
+                    postagens: postagens
+                })
             })
-        })
+            
         .catch(err => {
             req.flash('error_msg', 'Não foi possivel carregar os posts, tente novamente')
             res.redirect('/404')

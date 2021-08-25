@@ -3,7 +3,8 @@ module.exports = {
         if(req.isAuthenticated() && req.user.eAdmin == 1){
             return next()
         }
-        req.flash('error_msg','você deve estar logado para entrar')
-        res.redirect('/')
+        res.render('index', {
+            deslogado: true
+        })
     }
 }

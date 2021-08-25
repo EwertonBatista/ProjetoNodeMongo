@@ -5,6 +5,10 @@ require('../models/Usuario')
 const Usuario = mongoose.model('usuarios')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
+require('../models/Postagem')
+const Postagem = mongoose.model('postagens')
+require('../models/Categoria')
+const Categoria = mongoose.model('categorias')
 
 router.get('/registro',(req, res) => {
     res.render('usuarios/registro')
@@ -42,10 +46,12 @@ router.post('/registro',(req, res) => {
             erros:erros
         })
     } else {
+       
         Usuario.findOne({
             email: req.body.email
         }).then((usuario)=>{
-            console.log(usuario)
+    
+            
             if(usuario){
                 req.flash('error_msg','Este email já esta cadastrado')
                 res.redirect('/usuario/registro')
@@ -63,19 +69,35 @@ router.post('/registro',(req, res) => {
                             req.flash('error_msg', 'houve um erro durante o salvamento')
                             res.redirect('/registro')
                         }else{
+                        
+        // Busca feita APENAS para poder renderizar as postagens junto com o SweetAlert2
+                            Postagem.find()
+                            .lean()
+                            .populate("categoria")
+                            .sort({data: 'desc'})
+                            .then((postagens)=>{
 
-                            novoUsuario.senha = hash
-                            novoUsuario.save().then(()=>{
-                                req.flash('success_msg', 'Sucesso no cadastro')
-                                res.redirect('/')
-                            }).catch((err) => {
-                                req.flash('error_msg', 'Erro no cadastro')
-                                res.redirect('/usuario/registro')
+                                novoUsuario.senha = hash
+                                novoUsuario.save().then(()=>{
+                                    res.render('index', {
+                                        sucesso: true,
+                                        postagens: postagens
+                                    })
+                                    req.flash('success_msg', 'Sucesso no cadastro')
+                                }).catch((err) => {
+                                    req.flash('error_msg', 'Erro no cadastro')
+                                    res.render('usuario/registro', {
+                                        postagens: postagens,
+                                        falha: true
+                                    })
+                                })
+                                
                             })
-
                         }
                     })
                 })
+                                    
+                                
 
 
             }
