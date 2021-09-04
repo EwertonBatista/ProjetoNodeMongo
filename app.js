@@ -59,9 +59,9 @@
         var hbs = handlebars.create({
             helpers: {
                 dataFormatada: (data)=>{
-                    
+                    return format(data, 'dd-MM-yyyy')
                 }
-                }
+            }
             },
             defaultLayout: 'main'
         })
