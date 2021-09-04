@@ -25,7 +25,8 @@
                
                 <form action="/admin/postagens/deletar" method="post" class="ml-3">
                     <input type="hidden" name="id" value="{{_id}}">
-                    <button type="submit" class="btn btn-danger">Deletar</button>
+                    <button type="submit" onclick="perguntar(event)" class="btn btn-danger">Deletar</button>
+                    <button type="submit" id="buttonnone" style="display: none"></button>
                 </form>
 
             </div>
@@ -36,3 +37,40 @@
         <h2 class="text-center display-7">Nenhuma postagem cadastrada</h2>
     </div>
 {{/each}}
+
+<script>
+    function perguntar(event){
+
+        event.preventDefault();
+
+
+        Swal.fire({
+        title: 'Você tem certeza?',
+        text: "Não será possivel voltar atras",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim, delete!'
+        }).then((result) => {
+        if (result.value == true) {
+            Swal.fire(
+            'Deletado!',
+            'A categoria foi deletada.',
+            'success'
+            )
+         setTimeout(function(){
+                enviarForm = document.getElementById('buttonnone')
+                enviarForm.click();
+            },1500)
+        }else{
+            Swal.fire(
+            'Não deletado!',
+            'A categoria não foi deletada.',
+            'error'
+            )
+        }
+    })
+}
+    
+</script>

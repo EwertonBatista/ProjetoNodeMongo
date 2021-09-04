@@ -24,6 +24,7 @@
     // Data-fns
     const format = require("date-fns/format");
     const formatDistance = require("date-fns/formatDistance");
+    const brLocale = require('date-fns/locale/pt-BR')
     // Autenticação
     passport = require('passport')
     require("./config/auth")(passport)
@@ -57,14 +58,19 @@
     // HandleBars
 
         var hbs = handlebars.create({
+            defaultLayout: 'main',
             helpers: {
+
                 dataFormatada: (data)=>{
                     return format(data, 'dd-MM-yyyy')
                 }
             }
-            },
-            defaultLayout: 'main'
+            
+            
         })
+            
+            
+                
 
         app.engine('handlebars', hbs.engine);
         
@@ -98,14 +104,11 @@
         .sort({data: 'desc'})
         .then((postagens)=>{
 
-            console.log(format(new Date(), 'dd-MM-yyyy'))
-            console.log(postagens.data)
-            console.log(new Date())
-
-            res.render('index', {
-                postagens: postagens,
+                res.render('index', {
+                    postagens: postagens
+                })
             })
-        })
+            
         .catch(err => {
             req.flash('error_msg', 'Não foi possivel carregar os posts, tente novamente')
             res.redirect('/404')

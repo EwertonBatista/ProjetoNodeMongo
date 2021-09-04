@@ -10,11 +10,11 @@
         <form action="/admin/postagens/nova" method="post">
 
             <label for="name">Titulo</label>
-            <input type="text" name="titulo" class="form-control" required>
+            <input type="text" name="titulo" id="titulopostagem" class="form-control" required>
             <label for="slug">Slug</label>
-            <input type="text" name="slug" class="form-control" required>
+            <input type="text" name="slug" id="slugpostagem" class="form-control" required>
             <label for="descricao">Descrição</label>
-            <input type="text" name="descricao" class="form-control" required>
+            <input type="text" name="descricao" id="descricaopostagem" class="form-control" required>
 
             <label for="categoria">Selecione uma categoria disponivel</label>
             <select class="custom-select" name="categoria">
@@ -27,11 +27,45 @@
 
             <label for="conteudo">Conteudo:</label>
 
-            <textarea name="conteudo" id="" cols="30" rows="10" required class="form-control"></textarea>
+            <textarea name="conteudo" id="textareapostagem" cols="30" rows="10" class="form-control" required></textarea>
             <div class="d-flex justify-content-center">
-                <button class="btn btn-success mt-3" type="submit">Criar postagem</button>
+                <button class="btn btn-success mt-3" onclick="criarpostagem(event)" type="submit">Criar postagem</button>
+                <button type="submit" id="enviarpostagem" style="display:none"></button>
             </div>
 
         </form>
     </div>
 </div>
+
+<script>
+   
+   function criarpostagem(event){
+
+            titulipostagem = document.getElementById('titulopostagem').value
+            slugpostagem = document.getElementById('slugpostagem').value
+            descricaopostagem = document.getElementById('descricaopostagem').value
+            textareapostagem = document.getElementById('textareapostagem').value
+
+
+            event.preventDefault();
+            if(!titulopostagem || !slugpostagem || !descricaopostagem || !textareapostagem){
+                Swal.fire(
+                    'Já preencheu todos os dados?',
+                    '😐',
+                    'question'
+                    )
+            }else{
+                Swal.fire(
+                    'Postagem criada!',
+                    '🤗',
+                    'success'
+                    )
+
+                setTimeout(function(){
+                document.getElementById('enviarpostagem').click();
+                }, 1500)
+
+            }
+   }
+  
+</script>
